@@ -1,0 +1,30 @@
+<h1>{{ $ctrl.hero }}</h1>
+<form ng-submit="$ctrl.add($ctrl.form)">
+    <input type="text" data-ng-model="$ctrl.form.name" placeholder="Name">
+    <input type="tel" data-ng-model="$ctrl.form.telephone" placeholder="Telephone">
+    <input type="email" data-ng-model="$ctrl.form.email" placeholder="Email">
+
+    <button type="submit">Create a new contact</button>
+</form>
+
+<h1>{{$ctrl.heroList}}</h1>
+<table>
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Telphone</td>
+        <td>Email</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-ng-repeat="item in $ctrl.list">
+        <td data-ng-bind="item.name"></td>
+        <td data-ng-bind="item.telephone"></td>
+        <td data-ng-bind="item.email"></td>
+        <td>
+            <button type="button" data-ng-click="$ctrl.edit(item, $index)">Edit</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
