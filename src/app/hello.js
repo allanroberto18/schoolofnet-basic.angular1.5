@@ -7,22 +7,27 @@ angular
 
       var id = 0;
       vm.hero = 'New Content';
+
       vm.heroList = 'List a Content';
+
       vm.form = {
         name: '',
-        telphone: '',
+        telephone: '',
         email: ''
       };
+
+      vm.list = [];
+
       vm.add = add;
       vm.edit = edit;
-      vm.list = [];
+      vm.remove = remove;
 
       (function onInit() {
         return vm.list = ContactFactory.list();
       })();
 
       function add(contact) {
-        if (!contact) {
+        if (vm.form.name == '' && vm.form.telephone == '') {
           alert('You must need a valid contact');
           return;
         }
@@ -50,9 +55,17 @@ angular
         vm.form.id = contact.id;
       };
 
+      function remove(contact) {
+        if (!contact) {
+          alert('You must need a valid contact');
+          return;
+        }
+        ContactFactory.remove(contact);
+      };
+
       function clean() {
         vm.form = {
-          id : 0,
+          id: 0,
           name: '',
           telephone: '',
           email: ''
